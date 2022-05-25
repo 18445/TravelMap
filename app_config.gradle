@@ -1,0 +1,26 @@
+ext{
+
+    //是否是发布版本
+    isRelease = true
+
+    projectName = "TravelMap"
+
+    //map
+    app_android = [
+
+            compileSdk: 32,
+            minSdk: 21,
+            targetSdk: 32,
+
+    ]
+
+    app_applicationId = [
+            module_app : "com.jwzg.travelmap",
+            module_main : "com.jwzg.module_mine",
+            module_mine : "com.jwzg.module_mine",
+    ]
+
+    version = [
+        androidCoreVersion : '1.7.0',
+    ]
+}
