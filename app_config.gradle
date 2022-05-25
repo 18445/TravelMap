@@ -20,7 +20,7 @@ ext{
             module_mine : "com.jwzg.module_mine",
     ]
 
-    version = [
+    versions = [
         androidCoreVersion : '1.7.0',
     ]
 }
