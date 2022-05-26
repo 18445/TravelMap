@@ -1,5 +1,8 @@
 package com.jwzg.travelmap.sdks
 
+import com.alibaba.android.arouter.launcher.ARouter
+import com.google.auto.service.AutoService
+import com.jwzg.lib_common.BuildConfig
 import com.jwzg.travelmap.spi.SdkManager
 import com.mredrock.cyxbs.spi.SdkService
 
@@ -16,13 +19,13 @@ import com.mredrock.cyxbs.spi.SdkService
  * @Description:    Arouter的初始化
  */
 
-//@AutoService(SdkService::class)
-//class ARouterInitialService : SdkService {
-//    override fun onMainProcess(manager: SdkManager) {
-//        if (BuildConfig.DEBUG) {
-//            ARouter.openDebug()
-//            ARouter.openLog()
-//        }
-//        ARouter.init(manager.application)
-//    }
-//}
+@AutoService(SdkService::class)
+class ARouterInitialService : SdkService {
+    override fun onMainProcess(manager: SdkManager) {
+        if (BuildConfig.DEBUG) {
+            ARouter.openDebug()
+            ARouter.openLog()
+        }
+        ARouter.init(manager.application)
+    }
+}

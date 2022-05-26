@@ -32,7 +32,7 @@ ext{
         roomVersion : '2.4.2',
         coroutinesVersion : '1.5.2',
         mmkvVersion : '1.2.13',
-        arouterVersion : '1.5.1',
+        arouterVersion : '1.5.2',
         pagingVersion : '3.1.1',
 
 
