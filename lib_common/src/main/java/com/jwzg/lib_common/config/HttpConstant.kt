@@ -1,4 +1,4 @@
-package com.jwzg.lib_common.network
+package com.jwzg.lib_common.config
 
 /**
  *

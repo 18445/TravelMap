@@ -4,6 +4,7 @@ import android.app.Application
 import com.alibaba.android.arouter.launcher.ARouter
 import com.jwzg.lib_common.BuildConfig
 import com.jwzg.lib_common.basecompoent.BaseApp
+import com.jwzg.lib_common.network.RetrofitClient
 import com.jwzg.travelmap.spi.SdkManager
 import com.mredrock.cyxbs.spi.SdkService
 import java.util.*
@@ -35,7 +36,6 @@ class MyApplication : BaseApp(), SdkManager {
         loader.firstOrNull {
             it.isSdkProcess(this)
         }?.onSdkProcess(this)
-
     }
 
     override val application: Application
