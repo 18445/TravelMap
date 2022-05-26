@@ -12,6 +12,7 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
+
 rootProject.name = "TravelMap"
 include ':lib_common'
 include ':module_app'
