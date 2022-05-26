@@ -47,7 +47,7 @@ dependencies {
     kapt 'com.google.auto.service:auto-service:1.0-rc6'
     api 'com.google.auto.service:auto-service:1.0-rc6'
 
-    api project(':lib_common')
+    implementation project(':lib_common')
 
     if (isRelease) {
         implementation project(':module_main')
