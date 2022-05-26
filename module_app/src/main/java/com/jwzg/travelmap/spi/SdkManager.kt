@@ -3,8 +3,7 @@ package com.jwzg.travelmap.spi
 import android.app.ActivityManager
 import android.app.Application
 import android.os.Process
-
-
+import com.jwzg.travelmap.BuildConfig
 
 
 /**
