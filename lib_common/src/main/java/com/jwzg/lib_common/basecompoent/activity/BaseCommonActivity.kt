@@ -28,7 +28,7 @@ import com.jwzg.lib_common.utils.hideKeyboard
  */
 abstract class BaseCommonActivity : AppCompatActivity(), ContainerLayoutStyle {
     private lateinit var toolbar: ToolbarExt
-    private lateinit var containerLayout: ViewGroup
+    lateinit var containerLayout: ViewGroup
 
     protected var context: Activity? = null
     private var fragmentManager: FragmentManager? = null

@@ -1,16 +1,14 @@
-package com.jwzg.lib_common.basecompoent
+package com.jwzg.lib_common.basecompoent.activity
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import androidx.annotation.LayoutRes
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowCompat
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.jwzg.lib_common.basecompoent.uiwidget.ContainerLayoutStyle.Companion.TOOL_BAR_STYLE_NONE
+import com.jwzg.lib_common.basecompoent.uiwidget.ContainerLayoutStyle.Companion.TOOL_BAR_STYLE_NORMAL
 import java.lang.reflect.ParameterizedType
 
 
@@ -22,11 +20,15 @@ import java.lang.reflect.ParameterizedType
  * @Description:activity抽离
  */
 abstract class BaseActivity<VM : ViewModel, VDB : ViewDataBinding> :
-    AppCompatActivity() {
+    BaseCommonActivity() {
     protected lateinit var mViewModel: VM
     protected lateinit var mBinding: VDB
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        getViews()
+        initActivity()
+
         setContentView(getLayoutId())
         mBinding = DataBindingUtil.setContentView(this, getLayoutId())
         mBinding.lifecycleOwner = this
@@ -37,7 +39,7 @@ abstract class BaseActivity<VM : ViewModel, VDB : ViewDataBinding> :
             this,
             ViewModelProvider.AndroidViewModelFactory(this.application)
         ).get(vmClass)
-        cancelStatusBar()
+//        cancelStatusBar()
         afterCreate()
     }
 
@@ -45,23 +47,39 @@ abstract class BaseActivity<VM : ViewModel, VDB : ViewDataBinding> :
     protected abstract fun getLayoutId(): Int
     protected abstract fun afterCreate()
 
-    /**
-     * 状态栏透明（CV自郭神）
-     */
-    private fun cancelStatusBar() {
-        val window = this.window
-        val decorView = window.decorView
-
-        // 这是 Android 做了兼容的 Compat 包
-        // 下面这个设置后会沉浸式状态栏和导航栏
-        WindowCompat.setDecorFitsSystemWindows(window, false)
-
-        val windowInsetsController = ViewCompat.getWindowInsetsController(decorView)
-        // 设置状态栏字体颜色为黑色
-        windowInsetsController?.isAppearanceLightStatusBars = true
-        //把状态栏颜色设置成透明
-        window.statusBarColor = Color.TRANSPARENT
+    override fun initLayout(toolbarStyle: Int) {
+        if (getLayoutResId() === 0) {
+            super.initLayout(toolbarStyle)
+            return
+        }
+        if (toolbarStyle == TOOL_BAR_STYLE_NONE) {
+            setContentView(getLayoutResId())
+        } else {
+            super.initLayout(toolbarStyle)
+            if (toolbarStyle == TOOL_BAR_STYLE_NORMAL) {
+                View.inflate(this, getLayoutResId(), containerLayout)
+            } else {
+                containerLayout.addView(View.inflate(this, getLayoutResId(), null), 0)
+            }
+        }
     }
+//    /**
+//     * 状态栏透明（CV自郭神）
+//     */
+//    private fun cancelStatusBar() {
+//        val window = this.window
+//        val decorView = window.decorView
+//
+//        // 这是 Android 做了兼容的 Compat 包
+//        // 下面这个设置后会沉浸式状态栏和导航栏
+//        WindowCompat.setDecorFitsSystemWindows(window, false)
+//
+//        val windowInsetsController = ViewCompat.getWindowInsetsController(decorView)
+//        // 设置状态栏字体颜色为黑色
+//        windowInsetsController?.isAppearanceLightStatusBars = true
+//        //把状态栏颜色设置成透明
+//        window.statusBarColor = Color.TRANSPARENT
+//    }
 
     /**
      * 保证同一按钮在1秒内只会响应一次点击事件
