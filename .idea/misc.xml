@@ -3,6 +3,27 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidStudio/TravelMap/lib_common/src/main/res/drawable-xxhdpi/common_big_button_bg.xml" value="0.2545" />
+        <entry key="..\:/AndroidStudio/TravelMap/lib_common/src/main/res/drawable-xxhdpi/common_button_bg.xml" value="0.2545" />
+        <entry key="..\:/AndroidStudio/TravelMap/lib_common/src/main/res/drawable-xxhdpi/common_dialog_bg.xml" value="0.2545" />
+        <entry key="..\:/AndroidStudio/TravelMap/lib_common/src/main/res/drawable-xxhdpi/common_divider.xml" value="0.2545" />
+        <entry key="..\:/AndroidStudio/TravelMap/lib_common/src/main/res/drawable-xxhdpi/common_dotted_line_x1_2dp_3dp.xml" value="0.2545" />
+        <entry key="..\:/AndroidStudio/TravelMap/lib_common/src/main/res/drawable-xxhdpi/common_white_0_bg.xml" value="0.2545" />
+        <entry key="..\:/AndroidStudio/TravelMap/lib_common/src/main/res/drawable-xxhdpi/default_placeholder_image.xml" value="0.2545" />
+        <entry key="..\:/AndroidStudio/TravelMap/lib_common/src/main/res/drawable-xxhdpi/rectangle_b5_to_b2_8dp_bg.xml" value="0.2545" />
+        <entry key="..\:/AndroidStudio/TravelMap/lib_common/src/main/res/drawable-xxhdpi/rectangle_gray10_8dp_bg.xml" value="0.2545" />
+        <entry key="..\:/AndroidStudio/TravelMap/lib_common/src/main/res/drawable-xxhdpi/rectangle_transparent_to_60black_bg.xml" value="0.2545" />
+        <entry key="..\:/AndroidStudio/TravelMap/lib_common/src/main/res/drawable-xxhdpi/rectangle_white_10dp_bg.xml" value="0.2545" />
+        <entry key="..\:/AndroidStudio/TravelMap/lib_common/src/main/res/drawable-xxhdpi/rectangle_white_12dp_bg.xml" value="0.2545" />
+        <entry key="..\:/AndroidStudio/TravelMap/lib_common/src/main/res/drawable-xxhdpi/rectangle_white_4dp_bg.xml" value="0.2545" />
+        <entry key="..\:/AndroidStudio/TravelMap/lib_common/src/main/res/drawable-xxhdpi/rectangle_white_8dp_bg.xml" value="0.2545" />
+        <entry key="..\:/AndroidStudio/TravelMap/lib_common/src/main/res/drawable-xxhdpi/rectangle_x1_12dp_bg.xml" value="0.2545" />
+        <entry key="..\:/AndroidStudio/TravelMap/lib_common/src/main/res/drawable-xxhdpi/rectangle_x1_1dp_white_bg.xml" value="0.2545" />
+        <entry key="..\:/AndroidStudio/TravelMap/lib_common/src/main/res/drawable-xxhdpi/rectangle_x1_8dp_bg.xml" value="0.2545" />
+        <entry key="..\:/AndroidStudio/TravelMap/lib_common/src/main/res/drawable-xxhdpi/rectangle_z1_1dp_bg.xml" value="0.2545" />
+        <entry key="..\:/AndroidStudio/TravelMap/lib_common/src/main/res/drawable-xxhdpi/rectangle_z2_to_z3_8dp_bg.xml" value="0.2545" />
+        <entry key="..\:/AndroidStudio/TravelMap/lib_common/src/main/res/drawable-xxhdpi/right_text_color.xml" value="0.2545" />
+        <entry key="..\:/AndroidStudio/TravelMap/lib_common/src/main/res/drawable-xxhdpi/transparent_divider_24dp_0.xml" value="0.2545" />
         <entry key="..\:/AndroidTool/AndroidProject/TravelMap/module_mine/src/main/res/layout/mine_activity_main.xml" value="0.12335359675785208" />
       </map>
     </option>
