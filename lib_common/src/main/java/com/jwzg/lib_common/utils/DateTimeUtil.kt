@@ -10,8 +10,8 @@ import java.util.*
  * @ClassName:      DateTimeUtil
  * @Author:         Yan
  * @CreateDate:     2022年05月28日 22:38:00
- * @UpdateRemark:   更新说明：
- * @Version:        1.0
+ * @UpdateRemark:   更新说明： 扩展函数更新
+ * @Version:        1.1
  * @Description:    与时间有关的工具类
  */
 
@@ -46,9 +46,9 @@ private val WEEKS = arrayOf("日", "一", "二", "三", "四", "五", "六")
  * @param format
  * @return
  */
-fun formatDate(second: Long, format: String): String {
-    val sdf = SimpleDateFormat(format)
-    val date = Date(second * MILLI_SECOND_OF_SECOND)
+fun Long.formatDate( format: String): String {
+    val sdf = SimpleDateFormat(format, Locale.CHINA)
+    val date = Date(this * MILLI_SECOND_OF_SECOND)
     return sdf.format(date)
 }
 
@@ -58,8 +58,8 @@ fun formatDate(second: Long, format: String): String {
  * @param format
  * @return
  */
-fun formatDate(second: String, format: String): String {
-    return formatDate(stringToLong(second), format)
+fun String.formatDate(format: String): String {
+    return this.toLong().formatDate(format)
 }
 
 /**
@@ -68,9 +68,9 @@ fun formatDate(second: String, format: String): String {
  * @param format
  * @return
  */
-fun formatDate(date: Date, format: String): String {
-    val sdf = SimpleDateFormat(format)
-    return sdf.format(date)
+fun Date.formatDate(format: String): String {
+    val sdf = SimpleDateFormat(format, Locale.CHINA)
+    return sdf.format(this)
 }
 
 /**
@@ -98,7 +98,7 @@ fun formatDurationDate(
     format: String,
     separator: String
 ): String {
-    val sdf = SimpleDateFormat(format)
+    val sdf = SimpleDateFormat(format, Locale.CHINA)
     return sdf.format(startDate) + separator + sdf.format(endDate)
 }
 
@@ -127,9 +127,9 @@ fun formatDurationDate(
     format: String,
     separator: String
 ): String {
-    val sdf = SimpleDateFormat(format)
-    val startDate: Date = Date(stringToLong(startTime) * MILLI_SECOND_OF_SECOND)
-    val endDate: Date = Date(stringToLong(endTime) * MILLI_SECOND_OF_SECOND)
+    val sdf = SimpleDateFormat(format, Locale.CHINA)
+    val startDate: Date = Date(startTime.toLong() * MILLI_SECOND_OF_SECOND)
+    val endDate: Date = Date(endTime.toLong() * MILLI_SECOND_OF_SECOND)
     return sdf.format(startDate) + separator + sdf.format(endDate)
 }
 
@@ -138,10 +138,10 @@ fun formatDurationDate(
  * @param weekDay
  * @return
  */
-fun getWeekText(weekDay: Int): String? {
-    return if (weekDay < 0 || weekDay >= WEEKS.size) {
+fun Int.getWeekText(): String {
+    return if (this < 0 || this >= WEEKS.size) {
         ""
-    } else "周" + WEEKS[weekDay]
+    } else "周" + WEEKS[this]
 }
 
 /**
@@ -151,12 +151,12 @@ fun getWeekText(weekDay: Int): String? {
  * @param prefix 星期的前缀，如周，星期等
  * @return
  */
-fun getDateAndWeek(millisecond: Long, pattern: String, prefix: String): String {
+fun Long.getDateAndWeek(pattern: String, prefix: String): String {
     val builder = StringBuilder()
-    val sdf = SimpleDateFormat(pattern)
-    builder.append(sdf.format(Date(millisecond)))
+    val sdf = SimpleDateFormat(pattern, Locale.CHINA)
+    builder.append(sdf.format(Date(this)))
     val calendar = Calendar.getInstance()
-    calendar.time = Date(millisecond)
+    calendar.time = Date(this)
     builder.append(" ").append(prefix).append(WEEKS[calendar[Calendar.DAY_OF_WEEK] - 1])
     return builder.toString()
 }
@@ -169,8 +169,7 @@ fun getDateAndWeek(millisecond: Long, pattern: String, prefix: String): String {
  * @return
  */
 fun getDateAndWeek(second: String, pattern: String, prefix: String): String {
-    return getDateAndWeek(
-        stringToLong(second) * MILLI_SECOND_OF_SECOND,
+    return (second.toLong() * MILLI_SECOND_OF_SECOND).getDateAndWeek(
         pattern,
         prefix
     )

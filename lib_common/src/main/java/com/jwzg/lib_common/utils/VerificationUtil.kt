@@ -10,8 +10,8 @@ import java.util.regex.Pattern
  * @ClassName:      VerificationUtil
  * @Author:         Yan
  * @CreateDate:     2022年05月28日 22:52:00
- * @UpdateRemark:   更新说明：
- * @Version:        1.0
+ * @UpdateRemark:   更新说明：扩展函数更新
+ * @Version:        1.1
  * @Description:    验证权限工具类
  */
 
@@ -20,10 +20,10 @@ import java.util.regex.Pattern
  * @param telNumber
  * @return
  */
-fun isValidTelNumber(telNumber: String): Boolean {
-    if (!TextUtils.isEmpty(telNumber)) {
+fun String.isValidTelNumber(): Boolean {
+    if (!TextUtils.isEmpty(this)) {
         val regex = "(\\+\\d+)?1[3456789]\\d{9}$"
-        return Pattern.matches(regex, telNumber)
+        return Pattern.matches(regex, this)
     }
     return false
 }
@@ -33,10 +33,10 @@ fun isValidTelNumber(telNumber: String): Boolean {
  * @param emailAddress
  * @return
  */
-fun isValidEmailAddress(emailAddress: String): Boolean {
-    if (!TextUtils.isEmpty(emailAddress)) {
+fun String.isValidEmailAddress(): Boolean {
+    if (!TextUtils.isEmpty(this)) {
         val regex = "\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*"
-        return Pattern.matches(regex, emailAddress)
+        return Pattern.matches(regex, this)
     }
     return false
 }
@@ -46,10 +46,10 @@ fun isValidEmailAddress(emailAddress: String): Boolean {
  * @param bankCard
  * @return
  */
-fun isValidBankCard(bankCard: String): Boolean {
-    if (!TextUtils.isEmpty(bankCard)) {
+fun String.isValidBankCard(): Boolean {
+    if (!TextUtils.isEmpty(this)) {
         val regex = "^[1-9](\\d{15} | \\d{18})$"
-        return Pattern.matches(regex, bankCard)
+        return Pattern.matches(regex, this)
     }
     return false
 }
@@ -59,10 +59,10 @@ fun isValidBankCard(bankCard: String): Boolean {
  * @param content
  * @return
  */
-fun isValidContent(content: String): Boolean {
-    if (!TextUtils.isEmpty(content)) {
+fun String.isValidContent(): Boolean {
+    if (!TextUtils.isEmpty(this)) {
         val regex = "^[\\w\\u4e00-\\u9fa5\\-]+$"
-        return Pattern.matches(regex, content)
+        return Pattern.matches(regex, this)
     }
     return false
 }
@@ -72,10 +72,10 @@ fun isValidContent(content: String): Boolean {
  * @param code
  * @return
  */
-fun isValidCode(code: String): Boolean {
-    if (!TextUtils.isEmpty(code)) {
+fun String.isValidCode(): Boolean {
+    if (!TextUtils.isEmpty(this)) {
         val regex = "\\d{6}"
-        return Pattern.matches(regex, code)
+        return Pattern.matches(regex, this)
     }
     return false
 }
@@ -85,7 +85,7 @@ fun isValidCode(code: String): Boolean {
  * @param psd
  * @return
  */
-fun isValidPassWord(psd: String): Boolean {
+fun String.isValidPassWord(): Boolean {
     /*   分开来注释一下：
             ^ 匹配一行的开头位置
             (?![0-9]+$) 预测该位置后面不全是数字
@@ -93,9 +93,9 @@ fun isValidPassWord(psd: String): Boolean {
             [0-9A-Za-z] {6,10} 由6-10位数字或这字母组成, {6,}至少要6，最多不限制
            $ 匹配行结尾位置
          */
-    if (!TextUtils.isEmpty(psd)) {
+    if (!TextUtils.isEmpty(this)) {
         val regex = "^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,}$"
-        return Pattern.matches(regex, psd)
+        return Pattern.matches(regex, this)
     }
     return false
 }
@@ -105,10 +105,10 @@ fun isValidPassWord(psd: String): Boolean {
  * @param content
  * @return
  */
-fun isChineseText(content: String): Boolean {
-    if (!TextUtils.isEmpty(content)) {
+fun String.isChineseText(): Boolean {
+    if (!TextUtils.isEmpty(this)) {
         val regex = "^[\\u4e00-\\u9fa5]+$"
-        return Pattern.matches(regex, content)
+        return Pattern.matches(regex, this)
     }
     return false
 }
@@ -118,10 +118,10 @@ fun isChineseText(content: String): Boolean {
  * @param content
  * @return
  */
-fun isEnglishText(content: String): Boolean {
-    if (!TextUtils.isEmpty(content)) {
+fun String.isEnglishText(): Boolean {
+    if (!TextUtils.isEmpty(this)) {
         val regex = "^[a-zA-Z]+\\s[a-zA-Z]+$"
-        return Pattern.matches(regex, content)
+        return Pattern.matches(regex, this)
     }
     return false
 }
@@ -131,8 +131,8 @@ fun isEnglishText(content: String): Boolean {
  * @param idCard
  * @return
  */
-fun isValidIdCard(idCard: String): Boolean {
-    return IdCardValidator.isValidateIdCard(idCard)
+fun String.isValidIdCard(): Boolean {
+    return IdCardValidator.isValidateIdCard(this)
 }
 
 /**
@@ -140,10 +140,10 @@ fun isValidIdCard(idCard: String): Boolean {
  * @param idCard
  * @return
  */
-fun isIdCard(idCard: String): Boolean {
-    if (!TextUtils.isEmpty(idCard)) {
+fun String.isIdCard(): Boolean {
+    if (!TextUtils.isEmpty(this)) {
         val regex = "(^\\d{17}(?:\\d|x|X)$)"
-        return Pattern.matches(regex, idCard)
+        return Pattern.matches(regex, this)
     }
     return false
 }

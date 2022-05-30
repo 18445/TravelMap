@@ -12,8 +12,8 @@ import java.util.*
  * @ClassName:      FileUtil
  * @Author:         Yan
  * @CreateDate:     2022年05月28日 22:47:00
- * @UpdateRemark:   更新说明：
- * @Version:        1.0
+ * @UpdateRemark:   更新说明：扩展函数更新
+ * @Version:        1.1
  * @Description:    文件操作的工具类
  */
 /**
@@ -34,9 +34,9 @@ fun sdcardIsValid(): Boolean {
  * @param filePath
  * @return
  */
-fun fileIsExist(filePath: String): Boolean {
+fun String.fileIsExist(): Boolean {
     if (sdcardIsValid()) {
-        val file = File(filePath)
+        val file = File(this)
         return file.exists()
     }
     return false
@@ -47,8 +47,8 @@ fun fileIsExist(filePath: String): Boolean {
  * @param path
  * @return
  */
-fun mkdirs(path: String): Boolean {
-    val file = File(path)
+fun String.mkdirs(): Boolean {
+    val file = File(this)
     return if (!file.exists()) {
         file.mkdirs()
     } else false
@@ -59,8 +59,8 @@ fun mkdirs(path: String): Boolean {
  * @param context
  * @return
  */
-fun getPrivatePath(context: Context): String {
-    return context.cacheDir.absolutePath
+fun Context.getPrivatePath(): String {
+    return this.cacheDir.absolutePath
 }
 
 /**
@@ -106,18 +106,18 @@ fun saveFile(directoryPath: String, fileName: String, content: String) {
  * @param fileName
  */
 fun deleteFile(directoryPath: String, fileName: String) {
-    deleteFile(directoryPath + File.separator + fileName)
+    (directoryPath + File.separator + fileName).deleteFile()
 }
 
 /**
  * 删除指定文件
  * @param filePath
  */
-fun deleteFile(filePath: String) {
+fun String.deleteFile() {
     if (sdcardIsValid()) {
         return
     }
-    val file = File(filePath)
+    val file = File(this)
     if (file.exists()) {
         file.delete()
     }
@@ -153,7 +153,7 @@ fun readFile(filePath: String): String? {
         val buffer = ByteArray(len)
         inputStream.read(buffer)
         inputStream.close()
-        return Arrays.toString(buffer)
+        return buffer.contentToString()
     } catch (e: Exception) {
         quietClose(inputStream)
     }

@@ -10,8 +10,8 @@ import com.jwzg.lib_common.BuildConfig
  * @ClassName:      LogUtil
  * @Author:         Yan
  * @CreateDate:     2022年05月28日 22:50:00
- * @UpdateRemark:   更新说明：
- * @Version:        1.0
+ * @UpdateRemark:   更新说明：扩展函数更新
+ * @Version:        1.1
  * @Description:    打印的工作类
  */
 
@@ -23,63 +23,63 @@ val TAG: String = "DEFAULT"
  */
 private val NEED_LOG: Boolean = BuildConfig.DEBUG
 
-fun i(content: String) {
+fun String.i() {
     if (NEED_LOG) {
-        Log.i(TAG, getLogPrefix() + content)
+        Log.i(TAG, getLogPrefix() + this)
     }
 }
 
-fun i(tag: String?, content: String) {
+fun String.i(tag: String) {
     if (NEED_LOG) {
-        Log.i(tag, getLogPrefix() + content)
+        Log.i(tag, getLogPrefix() + this)
     }
 }
 
-fun d(content: String) {
+fun String.d() {
     if (NEED_LOG) {
-        Log.d(TAG, getLogPrefix() + content)
+        Log.d(TAG, getLogPrefix() + this)
     }
 }
 
-fun d(tag: String?, content: String) {
+fun String.d(tag: String) {
     if (NEED_LOG) {
-        Log.d(tag, getLogPrefix() + content)
+        Log.d(tag, getLogPrefix() + this)
     }
 }
 
-fun e(content: String) {
+fun String.e() {
     if (NEED_LOG) {
-        Log.e(TAG, getLogPrefix() + content)
+        Log.e(TAG, getLogPrefix() + this)
     }
 }
 
-fun e(tag: String?, content: String) {
+fun String.e(tag: String) {
     if (NEED_LOG) {
-        Log.e(tag, getLogPrefix() + content)
+        Log.e(tag, getLogPrefix() + this)
     }
 }
 
-fun v(content: String) {
+fun String.v() {
     if (NEED_LOG) {
-        Log.v(TAG, getLogPrefix() + content)
+        Log.v(TAG, getLogPrefix() + this)
     }
 }
 
-fun v(tag: String?, content: String) {
+fun String.v(tag: String) {
     if (NEED_LOG) {
-        Log.v(tag, getLogPrefix() + content)
+        Log.v(tag, getLogPrefix() + this)
     }
 }
 
-fun w(content: String) {
+fun String.w() {
     if (NEED_LOG) {
-        Log.w(TAG, getLogPrefix() + content)
+        Log.w(TAG, getLogPrefix() + this)
     }
 }
 
-fun w(tag: String?, content: String) {
+fun String.w(tag: String) {
     if (NEED_LOG) {
-        Log.w(tag, getLogPrefix() + content)
+        Log.w(tag, getLogPrefix() + this)
     }
 }
 

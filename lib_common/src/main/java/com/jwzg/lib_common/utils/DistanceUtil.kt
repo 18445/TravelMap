@@ -90,7 +90,7 @@ fun getDistanceString(
     longitude2: String, latitude2: String
 ): String {
     return getDistanceString(
-        stringToDouble(longitude1), stringToDouble(latitude1),
-        stringToDouble(longitude2), stringToDouble(latitude2)
+        longitude1.toDouble(), latitude1.toDouble(),
+        longitude2.toDouble(), latitude2.toDouble()
     )
 }

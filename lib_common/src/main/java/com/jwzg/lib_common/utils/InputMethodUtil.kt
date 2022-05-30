@@ -15,8 +15,8 @@ import android.widget.ScrollView
  * @ClassName:      InputMethodUtil
  * @Author:         Yan
  * @CreateDate:     2022年05月27日 18:57:00
- * @UpdateRemark:   更新说明：
- * @Version:        1.0
+ * @UpdateRemark:   更新说明： 扩展函数更新
+ * @Version:        1.1
  * @Description:    键盘的相关操作
  */
 
@@ -30,8 +30,8 @@ private const val MINI_KEYBOARD_HEIGHT = 180
  * 切换菜单，显示时调用则隐藏，隐藏时调用则显示
  * @param context
  */
-fun toggleKeyboard(context: Context) {
-    val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+fun Context.toggleKeyboard() {
+    val imm = this.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
     imm.toggleSoftInput(0, 0)
 }
 
@@ -39,9 +39,9 @@ fun toggleKeyboard(context: Context) {
  * 隐藏键盘
  * @param context
  */
-fun hideKeyboard(context: Activity) {
-    val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-    val view = context.currentFocus
+fun Activity.hideKeyboard() {
+    val imm = this.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    val view = this.currentFocus
     if (view != null) {
         imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
@@ -51,9 +51,9 @@ fun hideKeyboard(context: Activity) {
  * 设置某个view的focusable和touchFocusable为true, 然后调用此方法
  * @param context
  */
-fun showKeyboard(context: Activity) {
-    val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-    val view = context.currentFocus
+fun Activity.showKeyboard() {
+    val imm = this.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    val view = this.currentFocus
     if (view != null) {
         imm.showSoftInput(view, 0)
     }
@@ -66,7 +66,7 @@ fun showKeyboard(context: Activity) {
  */
 fun showKeyboard(context: Context, view: View?) {
     val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-    imm?.showSoftInput(view, 0)
+    imm.showSoftInput(view, 0)
 }
 
 /**
