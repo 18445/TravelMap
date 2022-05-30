@@ -1,19 +1,31 @@
 plugins {
-    id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+}
+
+if(isRelease){
+    apply plugin: 'com.android.library'
+}else{
+    apply plugin: 'com.android.application'
 }
 
 android {
     compileSdk app_android.compileSdk
 
     defaultConfig {
-        applicationId app_applicationId.module_main
+        if(!isRelease){
+            applicationId app_applicationId.module_main
+        }
         minSdk app_android.minSdk
         targetSdk app_android.targetSdk
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
     }
 
     buildTypes {
@@ -28,6 +40,24 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+
+    //源集 - 用来设定java目录或者资源目录
+    sourceSets{
+        main{
+            if(!isRelease){
+                //组件化模式
+                manifest.srcFile 'src/main/debug/AndroidManifest.xml'
+            }else{
+                //集成模式
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+
+                //排除掉debug包得信息
+                java{
+                    exclude '**/debug/**'
+                }
+            }
+        }
     }
 }
 

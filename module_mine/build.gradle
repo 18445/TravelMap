@@ -1,19 +1,31 @@
 plugins {
-    id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+}
+
+if(isRelease){
+    apply plugin: 'com.android.library'
+}else{
+    apply plugin: 'com.android.application'
 }
 
 android {
     compileSdk app_android.compileSdk
 
     defaultConfig {
-        applicationId app_applicationId.module_mine
+        if(!isRelease){
+            applicationId app_applicationId.module_mine
+        }
         minSdk app_android.minSdk
         targetSdk app_android.targetSdk
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
     }
 
     buildTypes {
@@ -32,7 +44,7 @@ android {
 
     sourceSets{
         main{
-            if(!release){
+            if(!isRelease){
                 //组件化模式
                 manifest.srcFile 'src/main/debug/AndroidManifest.xml'
             }else{

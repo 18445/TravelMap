@@ -22,6 +22,11 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
     }
 
     buildTypes {
@@ -78,5 +83,8 @@ dependencies {
     //arouter
     api "com.alibaba:arouter-api:$versions.arouterVersion"
     kapt "com.alibaba:arouter-compiler:$versions.arouterVersion"
+
+    //权限请求框架
+    implementation "com.github.getActivity:XXPermissions:$versions.XXPermissions"
 
 }

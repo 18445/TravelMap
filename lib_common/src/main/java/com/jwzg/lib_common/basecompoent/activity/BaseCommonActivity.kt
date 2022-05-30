@@ -137,7 +137,7 @@ abstract class BaseCommonActivity : AppCompatActivity(), ContainerLayoutStyle {
 
     override fun finish() {
         super.finish()
-        hideKeyboard(this)
+        this.hideKeyboard()
         overridePendingTransition(
             R.anim.anim_translate_left_in_300,
             R.anim.anim_translate_right_out_300
